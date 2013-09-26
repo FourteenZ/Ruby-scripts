@@ -1,3 +1,4 @@
+# Sep, 2013 - checkin to github
 #KYC, this is a testing module to test various functionalities of Ruby
 #puts "hello ruby!"
 
@@ -369,17 +370,19 @@ puts last_login
 =end
 
 #testing of mysql 
-=begin
+#begin
 require  'Mysql'
 begin
-	con = Mysql.new '192.168.1.63', 'ivr', 'ivr', 'outbound'
+	#con = Mysql.new '192.168.1.63', 'ivr', 'ivr', 'outbound'
+	con = Mysql.new 'localhost', 'root', '', 'mysql'
 	#puts con.get_server_info
 	#rs = con.query 'select version()'
 	#puts rs.fetch_row
 	con.list_dbs.each do |db|
 		puts db
 	end
-	rs = con.query("select * from callees")
+	#rs = con.query("select * from callees")
+	rs = con.query("select * from help_category")
 	n_rows = rs.num_rows
 	n_rows.times do 
 		puts rs.fetch_row.join("\s")
@@ -392,7 +395,7 @@ rescue Mysql::Error => e
 ensure
 	con.close if con
 end
-=end
+#end
 
 #Testing expressions
 #puts `dir`
